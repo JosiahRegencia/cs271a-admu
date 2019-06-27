@@ -1,1 +1,4 @@
-# cs271a-admu
+Members: 
+
+Christian Qui
+Josiah Eleazar Regencia
