@@ -74,24 +74,29 @@ class Tree:
             self.root = Node(self.keyTracker, self.depth)
             self.stack.append(self.root)
         else:
-            self.stack[len(stack)-1].leftChild = Node(self.keyTracker+1,self.stack[len(stack)-1].level+1)
-            self.stack.append(self.stack[len(stack)-1].leftChild)
-            if (self.stack[len(stack)-1].level > self.depth):
-                self.depth = self.stack[len(stack)-1].level
-            self.stack[len(stack)-1].middleChild = Node(self.keyTracker+2,self.stack[len(stack)-1].level+1)
-            self.stack.append(self.stack[len(stack)-1].middleChild)
-            if (self.stack[len(stack)-1].level > self.depth):
-                self.depth = self.stack[len(stack)-1].level
-            self.stack[len(stack)-1].rightChild = Node(self.keyTracker+3,self.stack[len(stack)-1].level+1)
-            self.stack.append(self.stack[len(stack)-1].rightChild)
-            if (self.stack[len(stack)-1].level > self.depth):
-                self.depth = self.stack[len(stack)-1].level
+            temp = len(self.stack)-1
+            self.stack[temp].leftChild = Node(self.keyTracker+1,self.stack[temp].level+1)
+            self.stack.append(self.stack[temp].leftChild)
+            if (self.stack[temp].level > self.depth):
+                self.depth = self.stack[temp].level
+            self.stack[temp].middleChild = Node(self.keyTracker+2,self.stack[temp].level+1)
+            self.stack.append(self.stack[temp].middleChild)
+            if (self.stack[temp].level > self.depth):
+                self.depth = self.stack[temp].level
+            self.stack[temp].rightChild = Node(self.keyTracker+3,self.stack[temp].level+1)
+            self.stack.append(self.stack[temp].rightChild)
+            if (self.stack[temp].level > self.depth):
+                self.depth = self.stack[temp].level
             self.keyTracker = self.keyTracker + 3
-            self.stack.pop()
+            self.stack.pop(0)
 
     # Shows the contents of the queue to track contents and depth level
     def getQueue(self):
         for i in self.queue:
+            print("key = {}, depth = {}".format(i.key, i.level))
+
+    def getStack(self):
+        for i in self.stack:
             print("key = {}, depth = {}".format(i.key, i.level))
 
 # driver method FOR MANUAL TESTING
@@ -102,6 +107,15 @@ class Tree:
 
 # driver method UPDATE THE DESIRED LEVEL INPUT
 level_input = 5
+test = Tree()
 while (test.depth != level_input):
-    test.expand()
+    test.expand_bfs()
     test.getQueue()
+
+
+level_input = 2
+test = Tree()
+
+while (test.depth != level_input):
+    test.expand_dfs()
+    test.getStack()
