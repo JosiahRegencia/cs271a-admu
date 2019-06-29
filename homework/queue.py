@@ -29,6 +29,6 @@ class Queue:
 			front = self.front()
 			self.queue.remove(front)
 			return front
-		except IndexError as error:
+		except ValueError as error:
 			print 'Error: ', error
 			print 'Queue is empty'
