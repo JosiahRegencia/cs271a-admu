@@ -12,11 +12,6 @@ def BFS(tree):
 	while not tree.is_empty():
 		front = tree.dequeue()
 
-		print 'node: ', front
-		print 'is_goal: ', front.is_goal
-		print 'node level: ', front.level
-		print '\n'
-		
 		if front.level > 5:
 			""" 
 				This is the level tracker
@@ -25,6 +20,11 @@ def BFS(tree):
 				The code stops once it reaches a node in level 6, hence, break command
 			 """
 			break
+
+		print 'node: ', front
+		print 'is_goal: ', front.is_goal
+		print 'node level: ', front.level
+		print '\n'
 
 		if not front.is_goal:
 			children = front.create_children(3)
