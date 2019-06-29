@@ -45,9 +45,19 @@ def DFS(tree):
 
 def main():
 	root = Node(0)
+
+	'''
+		Uncomment next three lines for BFS
+		Comment the three lines below
+	'''
 	#tree = Queue()
 	#tree.enqueue(root)
 	#BFS(tree)
+
+	'''
+		Uncoment next three lines for DFS
+		Comment the three lines above
+	'''
 	tree = Stack()
 	tree.push(root)
 	DFS(tree)
