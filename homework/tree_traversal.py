@@ -20,7 +20,7 @@ def BFS(tree):
 			for child in children:
 				tree.enqueue(child)
 
-		elif front.is_goalc:
+		elif front.is_goal:
 			break
 
 def DFS(tree):
