@@ -1,17 +1,17 @@
-# Tree traversal using a queue
-
-import random
-
-
-class Node:
-	def __init__(self):
-		self.left  = None
-		self.mid   = None
-		self.right = None
-
-	def is_goal():
-		return bool(random.getrandbits(1))
+from node import Node 
+from queue import Queue
 
 
+def BFS(tree):
+	if tree.dequeue().is_goal() is False:
+		print 'tree front: ', tree.front()
+
+def main():
+	root = Node(0)
+	tree = Queue()
+	tree.append(root)
+	BFS(tree)
 
 
+if __name__ == 'main':
+	main()
