@@ -6,8 +6,11 @@ class Node:
 		self.level = level
 		self.children = list()
 
-	def is_goal():
-		return bool(random.getrandbits(1))
+	def is_goal(self):
+		basis = random.randint(1, 11)
+		if basis <= 8:
+			return False
+		return True
 
 	def create_children(self, length=1):
 		for i in range(0, length):
