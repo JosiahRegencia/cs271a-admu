@@ -8,10 +8,10 @@ from stack import Stack
 from queue import Queue
 
 
-def BFS(tree):
+def BFS(tree, depth_level):
 	while not tree.is_empty():
 		front = tree.dequeue()
-		if front.level > 5:
+		if front.level > depth_level:
 			""" 
 				This is the level tracker
 				refer to node.py for creation of children
@@ -30,14 +30,14 @@ def BFS(tree):
 		elif front.is_goal:
 			break
 
-def DFS(tree):
+def DFS(tree, depth_level):
 	while not tree.is_empty():
 		top = tree.pop()
 
 		print 'node: {}\tis_goal: {}\tnode level: {}' .format(top, top.is_goal, top.level)
 
 		if not top.is_goal:
-			if top.level == 5:
+			if top.level == depth_level:
 				""" 
 					This is the level tracker
 					refer to node.py for creation of children
@@ -65,17 +65,17 @@ def main():
 		Uncomment next three lines for BFS
 		Comment the three lines below
 	"""
-	# tree = Queue()
-	# tree.enqueue(root)
-	# BFS(tree)
+	tree = Queue()
+	tree.enqueue(root)
+	BFS(tree, 5)
 
 	"""
 		Uncoment next three lines for DFS
 		Comment the three lines above
 	"""
-	tree = Stack()
-	tree.push(root)
-	DFS(tree)
+	# tree = Stack()
+	# tree.push(root)
+	# DFS(tree, 5)
 
 
 if __name__ == '__main__':
