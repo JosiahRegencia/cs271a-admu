@@ -11,7 +11,6 @@ from queue import Queue
 def BFS(tree):
 	while not tree.is_empty():
 		front = tree.dequeue()
-
 		if front.level > 5:
 			""" 
 				This is the level tracker
@@ -21,10 +20,7 @@ def BFS(tree):
 			 """
 			break
 
-		print 'node: ', front
-		print 'is_goal: ', front.is_goal
-		print 'node level: ', front.level
-		print '\n'
+		print 'node: {}\tis_goal: {}\tnode level: {}' .format(front, front.is_goal, front.level)
 
 		if not front.is_goal:
 			children = front.create_children(3)
@@ -38,10 +34,7 @@ def DFS(tree):
 	while not tree.is_empty():
 		top = tree.pop()
 
-		print 'node: ', top
-		print 'is_goal: ', top.is_goal
-		print 'node level: ', top.level
-		print '\n'
+		print 'node: {}\tis_goal: {}\tnode level: {}' .format(top, top.is_goal, top.level)
 
 		if not top.is_goal:
 			if top.level == 5:
@@ -72,17 +65,17 @@ def main():
 		Uncomment next three lines for BFS
 		Comment the three lines below
 	"""
-	tree = Queue()
-	tree.enqueue(root)
-	BFS(tree)
+	# tree = Queue()
+	# tree.enqueue(root)
+	# BFS(tree)
 
 	"""
 		Uncoment next three lines for DFS
 		Comment the three lines above
 	"""
-	# tree = Stack()
-	# tree.push(root)
-	# DFS(tree)
+	tree = Stack()
+	tree.push(root)
+	DFS(tree)
 
 
 if __name__ == '__main__':
