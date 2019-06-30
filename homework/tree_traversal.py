@@ -67,18 +67,10 @@ def main():
 	try:
 		traversal = sys.argv[1].lower()
 		if traversal == commands[0]:
-			"""
-				Uncomment next three lines for BFS
-				Comment the three lines below
-			"""
 			tree = Queue()
 			tree.enqueue(root)
 			BFS(tree, 5)
 		elif traversal == commands[1]:
-			"""
-				Uncoment next three lines for DFS
-				Comment the three lines above
-			"""
 			tree = Stack()
 			tree.push(root)
 			DFS(tree, 5)
