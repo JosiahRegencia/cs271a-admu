@@ -7,6 +7,8 @@ from node import Node
 from stack import Stack
 from queue import Queue
 
+import sys
+
 
 def BFS(tree, depth_level):
 	while not tree.is_empty():
@@ -59,23 +61,32 @@ def DFS(tree, depth_level):
 			break
 
 def main():
+	commands = ['bfs', 'dfs']
 	root = Node(0)
 
-	"""
-		Uncomment next three lines for BFS
-		Comment the three lines below
-	"""
-	tree = Queue()
-	tree.enqueue(root)
-	BFS(tree, 5)
-
-	"""
-		Uncoment next three lines for DFS
-		Comment the three lines above
-	"""
-	# tree = Stack()
-	# tree.push(root)
-	# DFS(tree, 5)
+	try:
+		traversal = sys.argv[1].lower()
+		if traversal == commands[0]:
+			"""
+				Uncomment next three lines for BFS
+				Comment the three lines below
+			"""
+			tree = Queue()
+			tree.enqueue(root)
+			BFS(tree, 5)
+		elif traversal == commands[1]:
+			"""
+				Uncoment next three lines for DFS
+				Comment the three lines above
+			"""
+			tree = Stack()
+			tree.push(root)
+			DFS(tree, 5)
+		else:
+			print 'Only \'BFS\' or \'DFS\' allowed arguments'
+	except IndexError as error:
+		print' Error: ', error
+		print 'Must pass \'BFS\' or \'DFS\' as argument'
 
 
 if __name__ == '__main__':
