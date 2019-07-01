@@ -1,8 +1,3 @@
-"""
-	Please refer to queue.py, stack.py, and node.py also.
-"""
-
-
 from node import Node
 from stack import Stack
 from queue import Queue
@@ -14,12 +9,6 @@ def BFS(tree, depth_level):
 	while not tree.is_empty():
 		front = tree.dequeue()
 		if front.level > depth_level:
-			"""
-				This is the level tracker
-				refer to node.py for creation of children
-				also, in node.py every creation already increments the level by 1
-				The code stops once it reaches a node in level 6, hence, break command
-			 """
 			break
 
 		print('node: {}\tis_goal: {}\tnode level: {}'.format(front, front.is_goal, front.level))
@@ -40,21 +29,10 @@ def DFS(tree, depth_level):
 
 		if not top.is_goal:
 			if top.level == depth_level:
-				"""
-					This is the level tracker
-					refer to node.py for creation of children
-					also, in node.py every creation already increments the level by 1
-					Used continue since it has to go back to parent nodes and dig deep from there
-				"""
 				continue
 			else:
 				children = top.create_children(3)
 				for child in children[::-1]:
-					"""
-						Looped starting from the last index so that
-						the traversal will start digging on the left
-						instead of the right
-					"""
 					tree.push(child)
 
 		elif top.is_goal:
