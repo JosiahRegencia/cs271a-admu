@@ -11,15 +11,15 @@ class Queue:
 		try:
 			return self.queue[0]
 		except IndexError as error:
-			print 'Error: ', error
-			print 'Queue is empty'
+			print ('Error: ', error)
+			print ('Queue is empty')
 
 	def rear(self):
 		try:
 			return self.queue[len(self.queue) - 1]
 		except IndexError as error:
-			print 'Error: ', error
-			print 'Queue is empty'
+			print ('Error: ', error)
+			print ('Queue is empty')
 
 	def enqueue(self, item):
 		self.queue.append(item)
@@ -30,5 +30,5 @@ class Queue:
 			self.queue.remove(front)
 			return front
 		except ValueError as error:
-			print 'Error: ', error
-			print 'Queue is empty'
+			print ('Error: ', error)
+			print ('Queue is empty')

@@ -3,7 +3,7 @@
 """
 
 
-from node import Node 
+from node import Node
 from stack import Stack
 from queue import Queue
 
@@ -14,7 +14,7 @@ def BFS(tree, depth_level):
 	while not tree.is_empty():
 		front = tree.dequeue()
 		if front.level > depth_level:
-			""" 
+			"""
 				This is the level tracker
 				refer to node.py for creation of children
 				also, in node.py every creation already increments the level by 1
@@ -22,7 +22,7 @@ def BFS(tree, depth_level):
 			 """
 			break
 
-		print 'node: {}\tis_goal: {}\tnode level: {}' .format(front, front.is_goal, front.level)
+		print('node: {}\tis_goal: {}\tnode level: {}'.format(front, front.is_goal, front.level))
 
 		if not front.is_goal:
 			children = front.create_children(3)
@@ -36,11 +36,11 @@ def DFS(tree, depth_level):
 	while not tree.is_empty():
 		top = tree.pop()
 
-		print 'node: {}\tis_goal: {}\tnode level: {}' .format(top, top.is_goal, top.level)
+		print('node: {}\tis_goal: {}\tnode level: {}'.format(top, top.is_goal, top.level))
 
 		if not top.is_goal:
 			if top.level == depth_level:
-				""" 
+				"""
 					This is the level tracker
 					refer to node.py for creation of children
 					also, in node.py every creation already increments the level by 1
@@ -51,7 +51,7 @@ def DFS(tree, depth_level):
 				children = top.create_children(3)
 				for child in children[::-1]:
 					"""
-						Looped starting from the last index so that 
+						Looped starting from the last index so that
 						the traversal will start digging on the left
 						instead of the right
 					"""
@@ -75,10 +75,10 @@ def main():
 			tree.push(root)
 			DFS(tree, 5)
 		else:
-			print 'Only \'BFS\' or \'DFS\' allowed arguments'
+			print('Only \'BFS\' or \'DFS\' allowed arguments')
 	except IndexError as error:
-		print' Error: ', error
-		print 'Must pass \'BFS\' or \'DFS\' as argument'
+		print(' Error: ', error)
+		print('Must pass \'BFS\' or \'DFS\' as argument')
 
 
 if __name__ == '__main__':

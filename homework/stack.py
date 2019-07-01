@@ -11,8 +11,8 @@ class Stack:
 		try:
 			return self.stack[len(self.stack) - 1]
 		except IndexError as error:
-			print 'Error: ', error
-			print 'Stack is empty'
+			print ('Error: ', error)
+			print ('Stack is empty')
 
 	def push(self, item):
 		self.stack.append(item)
@@ -23,5 +23,5 @@ class Stack:
 			self.stack.remove(top)
 			return top
 		except ValueError as error:
-			print 'Error: ', error
-			print 'Stack is empty'
+			print ('Error: ', error)
+			print ('Stack is empty')
