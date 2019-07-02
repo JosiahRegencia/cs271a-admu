@@ -19,3 +19,9 @@ Notes on implementation:
 1. For this homework, we initially decided that the basis whether a node was a goal state is a random boolean.
 	1.1 Node is a goal state if goal instant variable is True. False if otherwise
 2. In this implementation, each node has a 5% chance to be a goal state (1/20)
+3. The children of a node is implemented as a list. This helps in making the branching factor dynamicc
+	3.1 children[0] is implemented as the leftmost side of the list
+	3.2 children[length-1] is implemented as the rightmost side of the list
+4. DFS and BFS functions have the same implementation. The only differences:
+	4.1 Data struture that was used for each traversal
+	4.2 The placement of the level tracker
