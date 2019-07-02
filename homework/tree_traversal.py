@@ -5,10 +5,8 @@ from tree_view_qui import TreeView
 
 import sys
 
-
-
+treeview = TreeView()
 def BFS(tree, depth_level):
-	treeview = TreeView()
 	while not tree.is_empty():
 		front = tree.dequeue()
 		treeview.add_node(front.level)
@@ -23,11 +21,10 @@ def BFS(tree, depth_level):
 				tree.enqueue(child)
 
 		elif front.is_goal:
+			treeview.print_tree()
 			break
-	return treeview
 
 def DFS(tree, depth_level):
-	treeview = TreeView()
 	while not tree.is_empty():
 		top = tree.pop()
 		treeview.add_node(top.level)
@@ -43,8 +40,8 @@ def DFS(tree, depth_level):
 					tree.push(child)
 
 		elif top.is_goal:
+			treeview.print_tree()
 			break
-	return treeview
 
 def main():
 	commands = ['bfs', 'dfs']
@@ -55,16 +52,17 @@ def main():
 		if traversal == commands[0]:
 			tree = Queue()
 			tree.enqueue(root)
-			BFS(tree, 5).print_tree
+			BFS(tree, 5)
 		elif traversal == commands[1]:
 			tree = Stack()
 			tree.push(root)
-			DFS(tree, 5).print_tree
+			DFS(tree, 5)
 		else:
 			print('Only \'BFS\' or \'DFS\' allowed arguments')
 	except IndexError as error:
 		print(' Error: ', error)
 		print('Must pass \'BFS\' or \'DFS\' as argument')
+
 
 if __name__ == '__main__':
 	main()
