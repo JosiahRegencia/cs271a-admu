@@ -11,7 +11,7 @@ Notes on how to run the homework:
 1. Main file is tree_traversal.py
 2. Running tree_traversal.py accepts an argument to select whether the program will run a dfs or a bfs.
  	2.1 To run bfs: python tree_traversal.py bfs
- 	2.2 To run dfs: python tree_traversal. dfs
+ 	2.2 To run dfs: python tree_traversal.py dfs
 3. The arguments 'dfs' or 'bfs' are not case-sensitive. So it can be DFS or Dfs.
 
 
