@@ -37,6 +37,7 @@ def BFS(tree, depth_level, Knight, Enemy):
 def DFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
 		top = tree.pop()
+		print('Parent: ', top.parent)
 		Knight.update_state(top.level,top.current)
 		#treeview.add_node(top.level)
 		# print('node level: {}\tnode current: {}\tis_goal: {}'.format(Knight.location[0], Knight.location[1], top.is_goal(Knight,Enemy)))
@@ -57,11 +58,13 @@ def DFS(tree, depth_level, Knight, Enemy):
 
 def main():
 	commands = ['bfs', 'dfs']
-	knight = Knight(random.randint(0,3),random.randint(0,3))
+	# knight = Knight(random.randint(0,3),random.randint(0,3))
+	knight = Knight(1, 1)
 	print('Knight Location: {}'.format(knight.location))
-	black_knight = Enemy(random.randint(0,3),random.randint(0,3))
+	# black_knight = Enemy(random.randint(0,3),random.randint(0,3))
+	black_knight = Enemy(1, 3)
 	print('Enemy Location: {}'.format(black_knight.location))
-	root = Node(knight.location[0],knight.location[1])
+	root = Node(None, knight.location[0],knight.location[1])
 
 	try:
 		traversal = sys.argv[1].lower()

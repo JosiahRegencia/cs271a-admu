@@ -19,7 +19,7 @@ class Knight:
         for i in range(8):
             x = p + X[i]
             y = q + Y[i]
-            if (x >= 0 and y >= 0 and x < n and y < m):
+            if ((x >= 0 and y >= 0) and (x < n and y < m)):
                 count += 1
                 output.append([X[i],Y[i]])
         return output
