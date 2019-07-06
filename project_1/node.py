@@ -2,22 +2,21 @@ import random
 
 
 class Node:
-	def __init__(self, level, location):
+	def __init__(self, level, current):
+		self.current = current
 		self.level = level
 		self.children = list()
-		self.is_goal = self.is_goal()
-		self.location = location
 
-	def is_goal(self):
-		basis = random.randint(1, 21)
-		if basis != 8:
+	def is_goal(self, Knight, Enemy):
+		if Knight.location != Enemy.location:
 			return False
 		return True
 
-	def create_children(self, length=1):
-		for i in range(0, length):
-			self.children.append(Node(self.level+1))
+	def create_children(self,Knight):
+		move_list = Knight.possible_moves(self.level,self.current)
+		temp = Knight.location
+		for i in range(0, len(move_list)):
+			new_level = temp[0] + move_list[i][0]
+			new_current = temp[1] + move_list[i][1]
+			self.children.append(Node(new_level,new_current))
 		return self.children
-
-	def possible_locations(self, current_locaton):
-		possible_location = list()
