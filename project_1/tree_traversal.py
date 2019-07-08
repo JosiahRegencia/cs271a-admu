@@ -59,10 +59,10 @@ def DFS(tree, depth_level, Knight, Enemy):
 def main():
 	commands = ['bfs', 'dfs']
 	# knight = Knight(random.randint(0,3),random.randint(0,3))
-	knight = Knight(1, 1)
+	knight = Knight(1, 0)
 	print('Knight Location: {}'.format(knight.location))
 	# black_knight = Enemy(random.randint(0,3),random.randint(0,3))
-	black_knight = Enemy(1, 3)
+	black_knight = Enemy(0, 2)
 	print('Enemy Location: {}'.format(black_knight.location))
 	root = Node(None, knight.location[0],knight.location[1])
 

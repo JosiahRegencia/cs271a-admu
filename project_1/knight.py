@@ -1,7 +1,7 @@
 # dimensions of the board
 # https://www.geeksforgeeks.org/possible-moves-knight/?fbclid=IwAR3LIu01zCrrWsV1BQryIvS3sd2clQ41tRc3GOhFNTxEfAf4Q6qcKExcpr0
-n = 4
-m = 4
+n = 3
+m = 3
 
 class Knight:
     def __init__(self, start_x, start_y):
