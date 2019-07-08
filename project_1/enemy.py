@@ -8,8 +8,6 @@ class Enemy:
 
     def set_location(self):
     	loc = random.randint(0,2),random.randint(0,2)
-    	print 'loc: ', loc
-    	print 'is_equal: ', loc==(1,1)
 
     	while loc[0] == 1 and loc[1] == 1:
     		loc = random.randint(0,2),random.randint(0,2)

@@ -23,7 +23,6 @@ class Node:
 		for i in range(0, len(move_list)):
 			new_level = temp[0] + move_list[i][0]
 			new_current = temp[1] + move_list[i][1]
-			print ('Node: ', self)
 			if self.parent == None:
 				self.children.append(Node(self, new_level, new_current))
 				print ('(x, y): ', (new_level, new_current))

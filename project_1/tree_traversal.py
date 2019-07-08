@@ -37,12 +37,11 @@ def BFS(tree, depth_level, Knight, Enemy):
 def DFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
 		top = tree.pop()
-		print('Parent: ', top.parent)
 		Knight.update_state(top.level,top.current)
 		#treeview.add_node(top.level)
 		# print('node level: {}\tnode current: {}\tis_goal: {}'.format(Knight.location[0], Knight.location[1], top.is_goal(Knight,Enemy)))
 		print('goal state: {} {}'.format(Enemy.location[0],Enemy.location[1]))
-		print('start: {} {}'.format(Knight.location[0],Knight.location[1]))
+		print('current state: {} {}'.format(Knight.location[0],Knight.location[1]))
 
 		if not top.is_goal(Knight,Enemy):
 			if top.level == depth_level:
