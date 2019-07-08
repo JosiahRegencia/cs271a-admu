@@ -28,7 +28,6 @@ class Node:
 				self.children.append(Node(self, new_level, new_current))
 				print ('(x, y): ', (new_level, new_current))
 			else:
-				print ('' + str((self.parent.level, self.parent.current)) + '=' + str((new_level, new_current)))
 				if (self.parent.level, self.parent.current) != (new_level, new_current):
 					print ('(x, y): ', (new_level, new_current))
 					self.children.append(Node(self, new_level,new_current))
