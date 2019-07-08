@@ -3,7 +3,6 @@ from stack import Stack
 from queue import Queue
 from tree_view import TreeView
 from knight import Knight
-from enemy import Enemy
 import random
 
 import sys
@@ -12,16 +11,10 @@ import time
 # #treeview = TreeView()
 def BFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
-		# for i in tree.queue:
-		# 	print("{} {}".format(i.level,i.current))
 		front = tree.dequeue()
 		Knight.update_state(front.level,front.current)
-		#treeview.add_node(front.level)
 		if Knight.location[0] > depth_level:
 			break
-		#
-		# print('node: {}\tis_goal: {}\tnode level: {}'.format(Knight.location[1], front.is_goal(Knight,Enemy), Knight.location[0]))
-		# print('node level: {}\tnode current: {}\tis_goal: {}'.format(Knight.location[0], Knight.location[1], front.is_goal(Knight,Enemy)))
 		print('goal state: {} {}'.format(Enemy.location[0],Enemy.location[1]))
 		print('start: {} {}'.format(Knight.location[0],Knight.location[1]))
 
@@ -31,15 +24,12 @@ def BFS(tree, depth_level, Knight, Enemy):
 				tree.enqueue(child)
 
 		elif front.is_goal(Knight,Enemy):
-			#treeview.print_tree()
 			break
 
 def DFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
 		top = tree.pop()
 		Knight.update_state(top.level,top.current)
-		#treeview.add_node(top.level)
-		# print('node level: {}\tnode current: {}\tis_goal: {}'.format(Knight.location[0], Knight.location[1], top.is_goal(Knight,Enemy)))
 		print('goal state: {} {}'.format(Enemy.location[0],Enemy.location[1]))
 		print('current state: {} {}'.format(Knight.location[0],Knight.location[1]))
 
@@ -52,15 +42,15 @@ def DFS(tree, depth_level, Knight, Enemy):
 					tree.push(child)
 
 		elif top.is_goal(Knight,Enemy):
-			#treeview.print_tree()
 			break
 
 def main():
 	commands = ['bfs', 'dfs']
-	knight = Knight(random.randint(0,2),random.randint(0,2))
+	knight = Knight()
+	knight.set_location()
 	# knight = Knight(1, 0)
 	print('Knight Location: {}'.format(knight.location))
-	black_knight = Enemy()
+	black_knight = Knight()
 	black_knight.set_location()
 	# black_knight = Enemy(0, 2)
 	print('Enemy Location: {}'.format(black_knight.location))
