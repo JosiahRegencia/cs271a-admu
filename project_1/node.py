@@ -13,9 +13,11 @@ class Node:
 			self.grand_parent = parent.parent
 
 	def is_goal(self, Knight, Enemy):
-		if Knight.location != Enemy.location:
+		if Knight.location[0] == Enemy.location[0]:
+			if Knight.location[1] == Enemy.location[1]:
+				return True
 			return False
-		return True
+		return False
 
 	def create_children(self,Knight):
 		move_list = Knight.possible_moves(self.level,self.current)
