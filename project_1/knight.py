@@ -7,13 +7,16 @@ m = 3
 
 class Knight:
     def __init__(self):
-        self.location = [self.set_location()[0], self.set_location()[1]]
-
+        self.location = self.set_location()
+        
     def set_location(self):
         loc = random.randint(0,2),random.randint(0,2)
+        print ('original loc: ', loc)
 
         while loc[0] == 1 and loc[1] == 1:
             loc = random.randint(0,2),random.randint(0,2)
+
+        print ('final loc: ', loc)
         return loc
 
     # successor function
