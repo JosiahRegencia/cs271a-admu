@@ -4,7 +4,6 @@ import random
 class Node:
 	def __init__(self, parent, level, current):
 		self.parent = parent
-		self.grand_parent = None
 		self.current = current
 		self.level = level
 		self.children = list()
@@ -27,10 +26,15 @@ class Node:
 			new_current = temp[1] + move_list[i][1]
 			if self.parent == None:
 				self.children.append(Node(self, new_level, new_current))
-				print ('(x, y): ', (new_level, new_current))
 			else:
 				if (self.parent.level, self.parent.current) != (new_level, new_current):
-					print ('(x, y): ', (new_level, new_current))
 					self.children.append(Node(self, new_level,new_current))
+		
+		print('Number of possible moves: {}'.format(len(self.children))),
+		print('\t'),
+		print ('Possible moves: '),
+		for child in self.children:
+			print('({},{})'.format(child.level, child.current)),
+			print('\t'),
 		print ('\n')
 		return self.children
