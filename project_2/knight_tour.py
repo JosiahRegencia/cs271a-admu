@@ -3,16 +3,34 @@ from stack import Stack
 from queue import Queue
 from tree_view import TreeView
 from knight import Knight
+from heuristic import heuristic
+from heuristic import cell
+import heapq
 import random
 
 import sys
 import time
 
 
-# def PQ(tree, Knight, Enemy):
-# 	while not tree is_empty():
+def priority_queue(tree, depth_level, Knight, Enemy):
+	while not tree.is_empty():
+		front = tree.dequeue()
+		Knight.update_state(front.level,front.current)
+		if Knight.location[0] > depth_level:
+			break
+		print('current state: {} {}\tgoal state: {} {}'.format(Knight.location[0],Knight.location[1],
+														 Enemy.location[0],Enemy.location[1]))
 
-# #treeview = TreeView()
+		if not front.is_goal(Knight,Enemy):
+			children = front.create_children(Knight)
+			for child in children:
+				tree.enqueue(child)
+
+		elif front.is_goal(Knight,Enemy):
+			break
+
+
+
 def BFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
 		front = tree.dequeue()
