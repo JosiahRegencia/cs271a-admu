@@ -25,15 +25,16 @@ class Node:
 
 	def create_children(self,Knight, Enemy):
 		move_list = Knight.possible_moves(self.level,self.current)
+		print ('move_list: ', move_list)
 		temp = Knight.location
 		for i in range(0, len(move_list)):
 			new_level = temp[0] + move_list[i][0]
 			new_current = temp[1] + move_list[i][1]
 			if self.parent == None:
-				self.children.append(Node(self, new_level, new_current, heuristic((new_level,new_current),Enemy.location,3)))
+				self.children.append(Node(self, new_level, new_current, heuristic((new_level,new_current),Enemy.location,2)))
 			else:
 				if (self.parent.level, self.parent.current) != (new_level, new_current):
-					self.children.append(Node(self, new_level,new_current,heuristic((new_level,new_current),Enemy.location,3)))
+					self.children.append(Node(self, new_level,new_current,heuristic((new_level,new_current),Enemy.location,2)))
 
 		print('Number of possible moves: {}'.format(len(self.children))),
 		print('\t'),
@@ -50,8 +51,8 @@ test_k = Knight()
 test_e = Knight()
 print(test_k.location)
 print(test_e.location )
-test = Node(None,0,1,heuristic((test_k.location),test_e.location,3))
-list = test.create_children(test_k,test_e)
+test = Node(None,test_k.location[0],test_k.location[1],heuristic((test_k.location),test_e.location,2))
+my_list = test.create_children(test_k,test_e)
 print(test.distance_to_goal)
-print(list[0].distance_to_goal)
-print(list[1].distance_to_goal)
+print(my_list[0].distance_to_goal)
+print(my_list[1].distance_to_goal)
