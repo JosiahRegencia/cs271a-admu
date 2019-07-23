@@ -8,6 +8,10 @@ import random
 import sys
 import time
 
+
+# def PQ(tree, Knight, Enemy):
+# 	while not tree is_empty():
+
 # #treeview = TreeView()
 def BFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():

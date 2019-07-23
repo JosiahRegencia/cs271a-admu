@@ -1,5 +1,6 @@
 # dimensions of the board
 import random
+import math
 
 n = 3
 m = 3
