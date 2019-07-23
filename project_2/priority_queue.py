@@ -25,3 +25,19 @@ class Priority_queue:
         except IndexError as error:
             print ('Error: ', error)
             print ('Queue is empty')
+
+    def enqueue(self, item):
+		self.queue.append(item)
+
+    def dequeue(self):
+        try:
+            min = 0
+            for i in range(len(self.queue)):
+                if self.queue[i].distance_to_goal < self.queue[min].distance_to_goal:
+                    min = i
+            out = self.queue[min]
+            del self.queue[min]
+            return out
+        except IndexError as error:
+            print('Error: ', error)
+            print('Queue is empty')

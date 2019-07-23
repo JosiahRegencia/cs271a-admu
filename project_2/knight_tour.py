@@ -5,14 +5,13 @@ from tree_view import TreeView
 from knight import Knight
 from heuristic import heuristic
 from heuristic import cell
-import heapq
 import random
 
 import sys
 import time
 
 
-def priority_queue(tree, depth_level, Knight, Enemy):
+def GreedyBFS(tree, depth_level, Knight, Enemy):
 	while not tree.is_empty():
 		front = tree.dequeue()
 		Knight.update_state(front.level,front.current)
