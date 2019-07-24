@@ -1,23 +1,21 @@
-import heapq
-
-class Priority_queue:
+class PriorityQueue:
     def __init__(self):
         self.queue = list()
 
-	def is_empty(self):
-		if len(self.queue) == 0:
-			return True
-		return False
+    def is_empty(self):
+        if len(self.queue) == 0:
+            return True
+        return False
 
     def sort(self):
         heapq.heapify(self.queue)
 
-	def front(self):
-		try:
-			return self.queue[0]
-		except IndexError as error:
-			print ('Error: ', error)
-			print ('Queue is empty')
+    def front(self):
+        try:
+            return self.queue[0]
+        except IndexError as error:
+            print ('Error: ', error)
+            print ('Queue is empty')
 
     def rear(self):
         try:
@@ -27,7 +25,7 @@ class Priority_queue:
             print ('Queue is empty')
 
     def enqueue(self, item):
-		self.queue.append(item)
+        self.queue.append(item)
 
     def dequeue(self):
         try:

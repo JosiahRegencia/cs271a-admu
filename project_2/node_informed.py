@@ -2,7 +2,7 @@ import random
 from heuristic import cell
 from heuristic import heuristic
 
-class Node:
+class Node_informed:
 	# heuristic
 	def __init__(self, parent, level, current, heuristic):
 	# def __init__(self, parent, level, current):
@@ -29,10 +29,10 @@ class Node:
 			new_level = temp[0] + move_list[i][0]
 			new_current = temp[1] + move_list[i][1]
 			if self.parent == None:
-				self.children.append(Node(self, new_level, new_current, heuristic((new_level,new_current),Enemy.location,3)))
+				self.children.append(Node_informed(self, new_level, new_current, heuristic((new_level,new_current),Enemy.location,3)))
 			else:
 				if (self.parent.level, self.parent.current) != (new_level, new_current):
-					self.children.append(Node(self, new_level,new_current,heuristic((new_level,new_current),Enemy.location,3)))
+					self.children.append(Node_informed(self, new_level,new_current,heuristic((new_level,new_current),Enemy.location,3)))
 
 		print('Number of possible moves: {}'.format(len(self.children))),
 		print('\t'),

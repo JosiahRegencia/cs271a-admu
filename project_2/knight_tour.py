@@ -1,4 +1,5 @@
-from node import Node
+from node_uninformed import Node
+from node_informed import Node_informed
 from stack import Stack
 from queue import Queue
 from tree_view import TreeView
@@ -6,6 +7,7 @@ from knight import Knight
 from heuristic import heuristic
 from heuristic import cell
 import random
+from priority_queue import PriorityQueue
 
 import sys
 import time
@@ -21,7 +23,7 @@ def GreedyBFS(tree, depth_level, Knight, Enemy):
 														 Enemy.location[0],Enemy.location[1]))
 
 		if not front.is_goal(Knight,Enemy):
-			children = front.create_children(Knight)
+			children = front.create_children(Knight, Enemy)
 			for child in children:
 				tree.enqueue(child)
 
@@ -66,7 +68,7 @@ def DFS(tree, depth_level, Knight, Enemy):
 			break
 
 def main():
-	commands = ['bfs', 'dfs']
+	commands = ['bfs', 'dfs', 'greedy']
 	knight = Knight()
 	print('Knight Location: {}'.format(knight.location))
 
@@ -74,11 +76,12 @@ def main():
 	print('Enemy Location: {}'.format(black_knight.location))
 	print('\n\n')
 
-	root = Node(None, knight.location[0],knight.location[1])
+	# root = Node(None, knight.location[0],knight.location[1])
 
 	try:
 		traversal = sys.argv[1].lower()
 		if traversal == commands[0]:
+			root = Node(None, knight.location[0],knight.location[1])
 			start = time.time()
 			tree = Queue()
 			tree.enqueue(root)
@@ -86,12 +89,20 @@ def main():
 			end = time.time()
 			print('\nTotal Traverse Time:\t{}'.format(end-start))
 		elif traversal == commands[1]:
+			root = Node(None, knight.location[0],knight.location[1])
 			start = time.time()
 			tree = Stack()
 			tree.push(root)
 			DFS(tree, 3, knight, black_knight)
 			end = time.time()
 			print('\nTotal Traverse Time:\t{}'.format(end-start))
+		elif traversal == commands[2]:
+			root = Node_informed(None, knight.location[0],knight.location[1],heuristic(knight.location,black_knight.location,3))
+			start = time.time()
+			tree = PriorityQueue()
+			tree.enqueue(root)
+			GreedyBFS(tree, 3, knight, black_knight)
+			end = time.time()
 		else:
 			print('Only \'BFS\' or \'DFS\' allowed arguments')
 	except IndexError as error:
