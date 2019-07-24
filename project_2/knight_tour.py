@@ -68,7 +68,7 @@ def DFS(tree, depth_level, Knight, Enemy):
 			break
 
 def main():
-	commands = ['bfs', 'dfs', 'greedy']
+	commands = ['bfs', 'dfs', 'greedy', 'all']
 	knight = Knight()
 	print('Knight Location: {}'.format(knight.location))
 
@@ -103,6 +103,43 @@ def main():
 			tree.enqueue(root)
 			GreedyBFS(tree, 3, knight, black_knight)
 			end = time.time()
+			print('\nTotal Traverse Time:\t{}'.format(end-start))
+		# output all
+		elif traversal == commands[3]:
+			# several roots were made to ensure initialization of Knight
+			# bfs might end up updating the knight, leaving the knight in goal state for the succeeding trials
+			root_bfs = Node(None, knight.location[0],knight.location[1])
+			root_dfs = Node(None, knight.location[0],knight.location[1])
+			root_informed = Node_informed(None, knight.location[0],knight.location[1],heuristic(knight.location,black_knight.location,3))
+
+			# bfs
+			print('----BFS Traversal----')
+			start_bfs = time.time()
+			tree = Queue()
+			tree.enqueue(root_bfs)
+			BFS(tree, 3, knight, black_knight)
+			end_bfs = time.time()
+
+			# dfs
+			print('----DFS Traversal----')
+			start_dfs = time.time()
+			tree = Stack()
+			tree.push(root_dfs)
+			DFS(tree, 3, knight, black_knight)
+			end_dfs = time.time()
+
+			# greedy
+			print('----Greedy Best First Search Traversal----')
+			start_greedy = time.time()
+			tree = PriorityQueue()
+			tree.enqueue(root_informed)
+			GreedyBFS(tree, 3, knight, black_knight)
+			end_greedy = time.time()
+
+			# output
+			print("BFS: {0:.4f}".format(end_bfs-start_bfs))
+			print("DFS: {0:.4f}".format(end_dfs-start_dfs))
+			print("Greedy: {0:.4f}".format(end_greedy-start_greedy))
 		else:
 			print('Only \'BFS\' or \'DFS\' allowed arguments')
 	except IndexError as error:
