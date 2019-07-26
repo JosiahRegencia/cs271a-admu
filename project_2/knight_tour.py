@@ -87,7 +87,7 @@ def main():
 
 	# root = Node(None, knight.location[0],knight.location[1])
 
-	
+
 	# several roots were made to ensure initialization of Knight
 	# bfs might end up updating the knight, leaving the knight in goal state for the succeeding trials
 	root_bfs = Node(None, knight.location[0],knight.location[1])
@@ -120,9 +120,10 @@ def main():
 
 	# output
 	print("\n\n")
-	print("BFS:\t{0:.10f}\tDepth: {1}".format(end_bfs-start_bfs, bfs_depth))
-	print("DFS:\t{0:.10f}\tDepth: {1}".format(end_dfs-start_dfs, dfs_depth))
-	print("Greedy:\t{0:.10f}\tDepth: {1}".format(end_greedy-start_greedy, greedy_depth))
+	print('Results Summary:')
+	print("BFS - \tRun Time:{0:.10f}\tDepth: {1}".format(end_bfs-start_bfs, bfs_depth))
+	print("DFS - \tRun Time:{0:.10f}\tDepth: {1}".format(end_dfs-start_dfs, dfs_depth))
+	print("GBFS - \tRun Time:{0:.10f}\tDepth: {1}".format(end_greedy-start_greedy, greedy_depth))
 
 
 if __name__ == '__main__':

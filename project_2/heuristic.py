@@ -1,3 +1,6 @@
+# this code was programmed using this website as a guide:
+# https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/
+
 class cell:
 	def __init__(self, x = 0, y = 0, distance = 0):
 		self.x = x
@@ -20,7 +23,7 @@ def heuristic(origin, target, N):
 		if(item.x == target[0] and
 		item.y == target[1]):
 			return item.distance
-		# iterate for all reachable states
+
 		for i in range(8):
 			x = item.x + move_x[i]
 			y = item.y + move_y[i]
